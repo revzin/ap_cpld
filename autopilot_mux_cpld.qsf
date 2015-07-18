@@ -1,0 +1,87 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 1991-2010 Altera Corporation
+# Your use of Altera Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Altera Program License 
+# Subscription Agreement, Altera MegaCore Function License 
+# Agreement, or other applicable license agreement, including, 
+# without limitation, that your use is for the sole purpose of 
+# programming logic devices manufactured by Altera and sold by 
+# Altera or its authorized distributors.  Please refer to the 
+# applicable agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus II
+# Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+# Date created = 22:11:57  July 05, 2015
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		autopilot_mux_cpld_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus II software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY MAX3000A
+set_global_assignment -name DEVICE "EPM3064ATC44-10"
+set_global_assignment -name TOP_LEVEL_ENTITY autopilot_mux_cpld
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION "9.1 SP2"
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "22:11:57  JULY 05, 2015"
+set_global_assignment -name LAST_QUARTUS_VERSION "13.0 SP1"
+set_global_assignment -name USE_GENERATED_PHYSICAL_CONSTRAINTS OFF -section_id eda_blast_fpga
+set_global_assignment -name DEVICE_FILTER_PACKAGE TQFP
+set_global_assignment -name DEVICE_FILTER_PIN_COUNT 44
+set_global_assignment -name BDF_FILE autopilot_mux_cpld.bdf
+set_global_assignment -name MAX7000_DEVICE_IO_STANDARD "3.3-V LVCMOS"
+set_location_assignment PIN_42 -to AUTO_EL
+set_location_assignment PIN_43 -to AUTO_AI
+set_location_assignment PIN_44 -to AUTO_TH
+set_location_assignment PIN_2 -to AUTO_RD
+set_location_assignment PIN_3 -to AUTO_RCH5
+set_location_assignment PIN_5 -to AUTO_RCH6
+set_location_assignment PIN_6 -to AUTO_RCH7
+set_location_assignment PIN_34 -to RAD_RCH7
+set_location_assignment PIN_35 -to SW
+set_location_assignment PIN_33 -to RAD_RCH6
+set_location_assignment PIN_31 -to RAD_RCH5
+set_location_assignment PIN_28 -to RAD_RD
+set_location_assignment PIN_27 -to RAD_TH
+set_location_assignment PIN_25 -to RAD_AI
+set_location_assignment PIN_23 -to RAD_EL
+set_location_assignment PIN_22 -to OUTMUX_RCH7
+set_location_assignment PIN_21 -to OUTMUX_RCH6
+set_location_assignment PIN_20 -to OUTMUX_RCH5
+set_location_assignment PIN_19 -to OUTMUX_RD
+set_location_assignment PIN_18 -to OUTMUX_TH
+set_location_assignment PIN_15 -to OUTMUX_AI
+set_location_assignment PIN_14 -to OUTMUX_EL
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to AUTO_EL
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to AUTO_AI
+set_global_assignment -name SYSTEMVERILOG_FILE mux2.sv
+set_global_assignment -name USE_CONFIGURATION_DEVICE ON
+set_global_assignment -name RESERVE_ALL_UNUSED_PINS_NO_OUTPUT_GND "AS INPUT TRI-STATED"
+set_global_assignment -name VERILOG_INPUT_VERSION SYSTEMVERILOG_2005
+set_global_assignment -name VERILOG_SHOW_LMF_MAPPING_MESSAGES OFF
+set_global_assignment -name OPTIMIZE_HOLD_TIMING OFF
+set_global_assignment -name OPTIMIZE_MULTI_CORNER_TIMING OFF
+set_global_assignment -name FITTER_EFFORT "STANDARD FIT"
+set_location_assignment PIN_37 -to GCLK
+set_global_assignment -name SYNTH_TIMING_DRIVEN_SYNTHESIS OFF
+set_global_assignment -name POWER_USE_PVA OFF
+set_global_assignment -name SYSTEMVERILOG_FILE servo_to_logic.sv
+set_global_assignment -name SYSTEMVERILOG_FILE freq_div.sv
+set_location_assignment PIN_8 -to nRX_VALID

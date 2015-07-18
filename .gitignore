@@ -1,0 +1,12 @@
+# Altera Quartus II
+db
+incremental_db
+*.bak
+*.rpt
+*.smsg
+*.summary
+*.pof
+*.pin
+*.done
+
+
