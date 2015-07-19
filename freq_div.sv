@@ -1,14 +1,11 @@
-module freq_div(in, out);
+module freq_div(input wire in, output logic out = 0);
 
-input in;
-output out;
-
-reg[11 : 0] counter;
+logic[11 : 0] counter = 0;
 
 // входная частота -- 26 МГц, выходная 10 кГц, делим на 2600 
 // 2600 "влезает" в 12 бит
 
-always @(posedge in)
+always_ff @(posedge in)
 begin
 	counter <= counter + 1;
 	if (counter == 2600)

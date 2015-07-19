@@ -2,11 +2,14 @@
 db
 incremental_db
 *.bak
+*.bak[0-9]
 *.rpt
 *.smsg
 *.summary
 *.pof
 *.pin
 *.done
-
-
+*.sdo
+rtl_work
+*.xrf
+msim_transcript

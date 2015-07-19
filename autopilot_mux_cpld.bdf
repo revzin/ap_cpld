@@ -22,7 +22,7 @@ applicable agreement for further details.
 (header "graphic" (version "1.4"))
 (pin
 	(input)
-	(rect 56 856 224 872)
+	(rect -104 896 64 912)
 	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
 	(text "GCLK" (rect 5 0 34 12)(font "Arial" ))
 	(pt 168 8)
@@ -35,7 +35,7 @@ applicable agreement for further details.
 		(line (pt 109 12)(pt 113 8))
 	)
 	(text "VCC" (rect 128 7 148 17)(font "Arial" (font_size 6)))
-	(annotation_block (location)(rect 56 840 104 856))
+	(annotation_block (location)(rect -104 880 -56 896))
 )
 (pin
 	(input)
@@ -277,7 +277,7 @@ applicable agreement for further details.
 )
 (pin
 	(input)
-	(rect 56 800 224 816)
+	(rect -104 840 64 856)
 	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
 	(text "SW" (rect 5 0 23 12)(font "Arial" ))
 	(pt 168 8)
@@ -290,7 +290,7 @@ applicable agreement for further details.
 		(line (pt 109 12)(pt 113 8))
 	)
 	(text "GND" (rect 128 7 149 17)(font "Arial" (font_size 6)))
-	(annotation_block (location)(rect 56 784 104 800))
+	(annotation_block (location)(rect -104 824 -56 840))
 )
 (pin
 	(output)
@@ -307,7 +307,7 @@ applicable agreement for further details.
 		(line (pt 82 8)(pt 78 12))
 		(line (pt 78 12)(pt 82 8))
 	)
-	(annotation_block (location)(rect 936 56 984 72))
+	(annotation_block (location)(rect 936 40 984 56))
 )
 (pin
 	(output)
@@ -324,7 +324,7 @@ applicable agreement for further details.
 		(line (pt 82 8)(pt 78 12))
 		(line (pt 78 12)(pt 82 8))
 	)
-	(annotation_block (location)(rect 936 168 984 184))
+	(annotation_block (location)(rect 936 152 984 168))
 )
 (pin
 	(output)
@@ -681,7 +681,7 @@ applicable agreement for further details.
 	)
 )
 (symbol
-	(rect 224 832 344 912)
+	(rect 64 872 184 952)
 	(text "freq_div" (rect 5 0 46 12)(font "Arial" ))
 	(text "inst9" (rect 8 64 31 76)(font "Arial" ))
 	(port
@@ -703,14 +703,14 @@ applicable agreement for further details.
 	)
 )
 (symbol
-	(rect 344 816 512 896)
-	(text "servo_to_logic" (rect 5 0 76 12)(font "Arial" ))
-	(text "inst12" (rect 8 64 37 76)(font "Arial" ))
+	(rect 184 816 320 896)
+	(text "sync" (rect 5 0 29 12)(font "Arial" ))
+	(text "inst13" (rect 8 64 37 76)(font "Arial" ))
 	(port
 		(pt 0 32)
 		(input)
-		(text "servo" (rect 0 0 28 12)(font "Arial" ))
-		(text "servo" (rect 21 27 49 39)(font "Arial" ))
+		(text "signal" (rect 0 0 28 12)(font "Arial" ))
+		(text "signal" (rect 21 27 49 39)(font "Arial" ))
 		(line (pt 0 32)(pt 16 32))
 	)
 	(port
@@ -721,18 +721,61 @@ applicable agreement for further details.
 		(line (pt 0 48)(pt 16 48))
 	)
 	(port
-		(pt 168 32)
+		(pt 136 32)
 		(output)
-		(text "log" (rect 0 0 14 12)(font "Arial" ))
-		(text "log" (rect 136 27 150 39)(font "Arial" ))
-		(line (pt 168 32)(pt 152 32))
+		(text "rise" (rect 0 0 17 12)(font "Arial" ))
+		(text "rise" (rect 101 27 118 39)(font "Arial" ))
+		(line (pt 136 32)(pt 120 32))
 	)
 	(port
-		(pt 168 48)
+		(pt 136 48)
+		(output)
+		(text "fall" (rect 0 0 15 12)(font "Arial" ))
+		(text "fall" (rect 103 43 118 55)(font "Arial" ))
+		(line (pt 136 48)(pt 120 48))
+	)
+	(drawing
+		(rectangle (rect 16 16 120 64))
+	)
+)
+(symbol
+	(rect 320 816 512 928)
+	(text "servo_to_logic" (rect 5 0 76 12)(font "Arial" ))
+	(text "inst15" (rect 8 96 37 108)(font "Arial" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "servo_rise" (rect 0 0 51 12)(font "Arial" ))
+		(text "servo_rise" (rect 21 27 72 39)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "servo_fall" (rect 0 0 49 12)(font "Arial" ))
+		(text "servo_fall" (rect 21 43 70 55)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48))
+	)
+	(port
+		(pt 0 64)
+		(input)
+		(text "clk" (rect 0 0 14 12)(font "Arial" ))
+		(text "clk" (rect 21 59 35 71)(font "Arial" ))
+		(line (pt 0 64)(pt 16 64))
+	)
+	(port
+		(pt 192 32)
+		(output)
+		(text "log" (rect 0 0 14 12)(font "Arial" ))
+		(text "log" (rect 160 27 174 39)(font "Arial" ))
+		(line (pt 192 32)(pt 176 32))
+	)
+	(port
+		(pt 192 48)
 		(output)
 		(text "rx_problem" (rect 0 0 54 12)(font "Arial" ))
-		(text "rx_problem" (rect 102 43 156 55)(font "Arial" ))
-		(line (pt 168 48)(pt 152 48))
+		(text "rx_problem" (rect 126 43 180 55)(font "Arial" ))
+		(line (pt 192 48)(pt 176 48))
 	)
 	(parameter
 		"MAX_HIGH_COUNT"
@@ -760,9 +803,9 @@ applicable agreement for further details.
 		""
 		(type "PARAMETER_SIGNED_DEC")	)
 	(drawing
-		(rectangle (rect 16 16 152 64))
+		(rectangle (rect 16 16 176 96))
 	)
-	(annotation_block (parameter)(rect 344 896 576 984))
+	(annotation_block (parameter)(rect 320 928 552 1016))
 )
 (connector
 	(pt 528 728)
@@ -819,14 +862,6 @@ applicable agreement for further details.
 (connector
 	(pt 528 64)
 	(pt 224 64)
-)
-(connector
-	(pt 224 808)
-	(pt 344 808)
-)
-(connector
-	(pt 344 808)
-	(pt 344 848)
 )
 (connector
 	(pt 744 728)
@@ -916,9 +951,26 @@ applicable agreement for further details.
 	(pt 512 416)
 	(pt 512 536)
 )
+(connector
+	(pt 64 848)
+	(pt 184 848)
+)
+(connector
+	(pt 184 864)
+	(pt 184 904)
+)
+(connector
+	(pt 320 904)
+	(pt 184 904)
+)
+(connector
+	(pt 320 904)
+	(pt 320 880)
+)
 (junction (pt 512 760))
 (junction (pt 512 648))
 (junction (pt 512 536))
 (junction (pt 512 416))
 (junction (pt 512 192))
 (junction (pt 512 304))
+(junction (pt 184 904))

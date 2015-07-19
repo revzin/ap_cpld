@@ -1,9 +1,14 @@
-
 // ============================================================
 // Преобразование сигнала управления сервоприводом в логический уровень
 // Крайнее левое положние считается "0", крайнее правое "1"
 // Обнаруживается отсутствие сигнала или его параметры неверны
-module servo_to_logic(servo, clk, log, rx_problem);
+`timescale 1us / 1us
+
+module servo_to_logic(input wire servo_rise,         	// передний фронт серво
+                      input wire servo_fall,				// задний фронт серво
+                      input wire clk,                 // такотовый сигнал 10 кГц
+							 output logic log = 0,           // выходной логический уровень
+							 output logic rx_problem = 1);   // флаг проблемы с приёмом (нет сигнала/неправильный сигнал)
 
 parameter MAX_HIGH_COUNT = 30;  // верхний предел длительности импульса servo = 0
 parameter MIN_HIGH_COUNT = 5;   // нижний предел длительности  импульса servo = 1
@@ -17,56 +22,53 @@ parameter MIN_LOW_COUNT = 230;  // нижний предел servo = 0 (сигн
 // тогда "середина" где-то на 15 счётных импульсах
 // всего 240 счётных импульсов на период
 
-input   servo,                              // сигнал с сервопривода
-        clk;                                // такотовый сигнал 10 кГц
-output  log,                                // выходной логический уровень
-        rx_problem;                         // флаг проблемы с приёмом (нет сигнала/неправильный сигнал)
-   
-wire[7 : 0] counter;                        // счётчик
-wire servo_prev;                            // предыдущее состояние servo
+logic[7 : 0] counter = 0;                      // счётчик
+logic servo_state = 0;
 
-always @(posedge clk)
+always_ff @(posedge clk)
 begin
- counter <= counter + 1;                    // считаем новый такт
+    counter <= counter + 1;                    // считаем новый такт
  
- if (!servo && counter > MAX_LOW_COUNT)     // сигнала нет слишком долго
- begin
-  counter <= 0;
-  rx_problem <= 1;
- end
+    if (servo_rise)                            // передний фронт servo
+    begin
+	     $display("On rise");
+        servo_state <= 1;
+        if (counter <= MIN_LOW_COUNT)          // новый сигнал пришёл сликом быстро
+            rx_problem <= 1;
+        counter <= 0;                          // начинаем счёт
+    end
+    else if (servo_fall)                       // задний фронт servo, заканчиваем счёт
+    begin
+	     $display("On fall");
+	     servo_state <= 0;
+        // на входе действительно управляющий сигнал сервопривода?
+        if (counter > MIN_HIGH_COUNT && counter < MAX_HIGH_COUNT)
+        begin
+            // если да, снимаем флаг проблемы и проверяем, сколько циклов servo = 1
+            rx_problem <= 0;
+            if (counter > LOGIC_THRESHOLD)
+                log <= 1;
+            else
+                log <= 0;
+        end
+        else
+            rx_problem <= 1;                   // сигнал не является управляющим сигналом сервопривода
+    end 
  
- if (servo && counter > MAX_HIGH_COUNT)     // servo = 1 слишком долго
- begin
-  counter <= 0;
-  rx_problem <= 1;
- end
+    if (!servo_state && counter > MAX_LOW_COUNT) // сигнала нет слишком долго
+    begin
+        counter <= 0;
+        rx_problem <= 1;
+    end
+ 
+    if (servo_state && counter > MAX_HIGH_COUNT)// servo = 1 слишком долго
+    begin
+        counter <= 0;
+        rx_problem <= 1;
+    end
  
  
- if (servo == 1 && servo_prev == 0)        // передний фронт servo
- begin 
-  if (counter <= MIN_LOW_COUNT)            // новый сигнал пришёл сликом быстро
-   rx_problem <= 1;
-  else 
-   counter <= 0;                           // начинаем счёт
- end
- else if (servo == 0 && servo_prev == 1)   // задний фронт servo, заканчиваем счёт
- begin
-  // на входе действительно управляющий сигнал сервопривода?
-  if (counter > MIN_HIGH_COUNT && counter < MAX_HIGH_COUNT)
-  begin
-   // если да, снимаем флаг проблемы и проверяем, сколько циклов servo = 1
-   rx_problem <= 0;
-   if (counter > LOGIC_THRESHOLD)
-    log <= 1;
-   else
-    log <= 0;
-  end
-  else
-   rx_problem <= 1;                        // сигнал не является 
-                                           // управляющим сигналом сервопривода
- end
- 
- servo_prev <= servo;                      // сохранили предыдущее состояние
+
 end
 
 endmodule

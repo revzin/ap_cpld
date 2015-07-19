@@ -85,3 +85,7 @@ set_global_assignment -name POWER_USE_PVA OFF
 set_global_assignment -name SYSTEMVERILOG_FILE servo_to_logic.sv
 set_global_assignment -name SYSTEMVERILOG_FILE freq_div.sv
 set_location_assignment PIN_8 -to nRX_VALID
+set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (Verilog)"
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
+set_global_assignment -name EDA_TIME_SCALE "1 us" -section_id eda_simulation
+set_global_assignment -name SYSTEMVERILOG_FILE sync.sv

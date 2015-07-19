@@ -20,36 +20,43 @@ applicable agreement for further details.
 */
 (header "symbol" (version "1.1"))
 (symbol
-	(rect 16 16 184 96)
+	(rect 16 16 208 128)
 	(text "servo_to_logic" (rect 5 0 64 12)(font "Arial" ))
-	(text "inst" (rect 8 64 20 76)(font "Arial" ))
+	(text "inst" (rect 8 96 20 108)(font "Arial" ))
 	(port
 		(pt 0 32)
 		(input)
-		(text "servo" (rect 0 0 23 12)(font "Arial" ))
-		(text "servo" (rect 21 27 44 39)(font "Arial" ))
+		(text "servo_rise" (rect 0 0 43 12)(font "Arial" ))
+		(text "servo_rise" (rect 21 27 64 39)(font "Arial" ))
 		(line (pt 0 32)(pt 16 32)(line_width 1))
 	)
 	(port
 		(pt 0 48)
 		(input)
-		(text "clk" (rect 0 0 10 12)(font "Arial" ))
-		(text "clk" (rect 21 43 31 55)(font "Arial" ))
+		(text "servo_fall" (rect 0 0 40 12)(font "Arial" ))
+		(text "servo_fall" (rect 21 43 61 55)(font "Arial" ))
 		(line (pt 0 48)(pt 16 48)(line_width 1))
 	)
 	(port
-		(pt 168 32)
-		(output)
-		(text "log" (rect 0 0 10 12)(font "Arial" ))
-		(text "log" (rect 137 27 147 39)(font "Arial" ))
-		(line (pt 168 32)(pt 152 32)(line_width 1))
+		(pt 0 64)
+		(input)
+		(text "clk" (rect 0 0 10 12)(font "Arial" ))
+		(text "clk" (rect 21 59 31 71)(font "Arial" ))
+		(line (pt 0 64)(pt 16 64)(line_width 1))
 	)
 	(port
-		(pt 168 48)
+		(pt 192 32)
+		(output)
+		(text "log" (rect 0 0 10 12)(font "Arial" ))
+		(text "log" (rect 161 27 171 39)(font "Arial" ))
+		(line (pt 192 32)(pt 176 32)(line_width 1))
+	)
+	(port
+		(pt 192 48)
 		(output)
 		(text "rx_problem" (rect 0 0 46 12)(font "Arial" ))
-		(text "rx_problem" (rect 101 43 147 55)(font "Arial" ))
-		(line (pt 168 48)(pt 152 48)(line_width 1))
+		(text "rx_problem" (rect 125 43 171 55)(font "Arial" ))
+		(line (pt 192 48)(pt 176 48)(line_width 1))
 	)
 	(parameter
 		"MAX_HIGH_COUNT"
@@ -77,7 +84,7 @@ applicable agreement for further details.
 		""
 		(type "PARAMETER_SIGNED_DEC")	)
 	(drawing
-		(rectangle (rect 16 16 152 64)(line_width 1))
+		(rectangle (rect 16 16 176 96)(line_width 1))
 	)
-	(annotation_block (parameter)(rect 184 -64 284 16))
+	(annotation_block (parameter)(rect 208 -64 308 16))
 )
