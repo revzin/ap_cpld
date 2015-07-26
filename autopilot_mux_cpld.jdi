@@ -1,6 +1,6 @@
 <sld_project_info>
   <project>
-    <hash md5_digest_80b="69c46190e510637424cf"/>
+    <hash md5_digest_80b="e4643cb6ac748ba5573d"/>
   </project>
   <file_info>
     <file device="EPM3064ATC44-10" path="autopilot_mux_cpld.sof" usercode="0x00000000"/>

@@ -69,8 +69,6 @@ set_location_assignment PIN_19 -to OUTMUX_RD
 set_location_assignment PIN_18 -to OUTMUX_TH
 set_location_assignment PIN_15 -to OUTMUX_AI
 set_location_assignment PIN_14 -to OUTMUX_EL
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to AUTO_EL
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to AUTO_AI
 set_global_assignment -name SYSTEMVERILOG_FILE mux2.sv
 set_global_assignment -name USE_CONFIGURATION_DEVICE ON
 set_global_assignment -name RESERVE_ALL_UNUSED_PINS_NO_OUTPUT_GND "AS INPUT TRI-STATED"
@@ -89,3 +87,11 @@ set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (Verilog)"
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
 set_global_assignment -name EDA_TIME_SCALE "1 us" -section_id eda_simulation
 set_global_assignment -name SYSTEMVERILOG_FILE sync.sv
+set_global_assignment -name POWER_USE_INPUT_FILES OFF
+set_global_assignment -name POWER_DEFAULT_TOGGLE_RATE "12.5 %"
+set_global_assignment -name POWER_DEFAULT_INPUT_IO_TOGGLE_RATE "50 %"
+set_global_assignment -name SDC_FILE autopilot_mux_cpld.sdc
+set_location_assignment LC64 -to "freq_div:inst9|counter[3]"
+set_location_assignment LAB_B -to "servo_to_logic:inst15|lpm_counter:counter_rtl_0|dffs[2]~70"
+set_location_assignment LC10 -to "servo_to_logic:inst15|lpm_counter:counter_rtl_0|dffs[7]~96"
+set_global_assignment -name MAX7000_JTAG_USER_CODE 7265767A

@@ -7,11 +7,11 @@ logic[11 : 0] counter = 0;
 
 always_ff @(posedge in)
 begin
-	counter <= counter + 1;
-	if (counter == 2600)
+   counter <= counter + 1;
+   if (counter == 2600)
 	begin
-		counter <= 0;
-		out <= ~out;
-	end
+      counter <= 0;
+      out <= ~out;
+   end
 end
 endmodule

@@ -53,7 +53,7 @@ begin
             rx_problem <= 1;                   // сигнал не является управляющим сигналом сервопривода
     end 
  
-    if (!servo_state && counter > MAX_LOW_COUNT) // сигнала нет слишком долго
+    if (!servo_state && counter > MAX_LOW_COUNT)// сигнала нет слишком долго
     begin
         counter <= 0;
         rx_problem <= 1;
